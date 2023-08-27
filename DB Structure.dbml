@@ -1,0 +1,31 @@
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table photos {
+  id integer [primary key]
+  title varchar
+  description varchar
+  date_taken date
+  photographer_id integer [ref: > photographers.id]
+}
+
+Table categories {
+  id integer [primary key]
+  name varchar
+  description varchar
+}
+
+Table photo_category {
+  photo_id integer [ref: > photos.id]
+  category_id integer [ref: > categories.id]
+  indexes {
+  (photo_id, category_id) [pk]
+  }
+}
+
+
+Table photographers {
+  id integer [primary key]
+  first_name varchar
+  last_name varchar
+  bio varchar
+}
